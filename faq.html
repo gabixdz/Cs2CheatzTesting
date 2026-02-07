@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ</title>
+<style>
+:root{
+  --accent:#2da3ff; --bg:#050b14;
+  --text:#eaf2ff; --muted:#9db7d6;
+  --link:#2de2ff;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0; padding:20px; font-family:Arial,sans-serif;
+  background:radial-gradient(circle at top,#0a1c33,#040910);
+  color:var(--text);
+}
+header{
+  text-align:center;
+  font-size:32px;
+  font-weight:bold;
+  margin-bottom:4px;
+}
+.subtitle{
+  text-align:center; color:var(--muted); margin-bottom:20px;
+}
+a,a:visited{color:var(--link); text-decoration:none;}
+
+.faq-container{max-width:900px; margin:auto; display:grid; gap:12px;}
+.faq-button{
+  background:linear-gradient(180deg,#0c213b,#08182c);
+  color:var(--text);
+  border:1px solid #1f4c78;
+  padding:12px;
+  border-radius:14px;
+  cursor:pointer;
+  transition:.25s, box-shadow .25s;
+  text-align:left;
+  font-size:16px;
+  position:relative;
+}
+.faq-button:hover{transform:translateY(-3px); box-shadow:0 0 18px rgba(45,163,255,.6);}
+.faq-content{
+  background:linear-gradient(180deg,#0b1f36,#08182b);
+  padding:18px;
+  border-radius:14px;
+  border:1px solid #1f4c78;
+  max-height:0;
+  opacity:0;
+  overflow:hidden;
+  transition:max-height 0.4s ease, opacity 0.4s ease, padding 0.4s ease;
+}
+.faq-content.show{
+  opacity:1;
+  max-height:500px; /* adjust if needed */
+  padding:18px;
+}
+
+/* confetti effect */
+.confetti-piece{position:absolute;width:8px;height:8px;border-radius:50%;
+pointer-events:none;animation:fall 1s forwards;}
+@keyframes fall{to{transform:translateY(280px) rotate(720deg);opacity:0;}}
+
+/* loading overlay */
+#loadingOverlay{
+  position:fixed; inset:0; background:rgba(5,11,20,.95);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none; transition:.3s; z-index:9999;
+}
+#loadingOverlay.show{opacity:1; pointer-events:auto;}
+.loader{width:48px;height:48px;border-radius:50%;
+border:4px solid rgba(255,255,255,.1);
+border-top:4px solid var(--accent);
+animation:spin 1s linear infinite;margin-bottom:14px;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+footer{
+  text-align:center;
+  margin-top:30px;
+  font-size:14px;
+  color:var(--muted);
+}
+</style>
+</head>
+<body>
+
+<header>Cs2Cheatz</header>
+<div class="subtitle">Fan FAQ</div>
+
+<div class="faq-container">
+  <button class="faq-button" onclick="toggleFaq(this)">Will I get VAC Lived?</button>
+  <div class="faq-content">You will not get VAC Lived ban if you use the cheats right. Some cheats are risky to use, since some of them are outdated or just bad, Download cheats only from Exloader, there are the best unsetected cheats there, but remember to config it right so you dont get banned. Enigma.tech legit is recommended for competitive and premier. You could also buy a premium cheat, they are way better, recommended are: Nixware, Memesense, and Midnight.</div>
+
+  <button class="faq-button" onclick="toggleFaq(this)">What is HVH?</button>
+  <div class="faq-content">HVH Is when a hacker plays against a hacker. In Cs2, HVH is about who has a better config, knowing wallbangs, and about playing skillfully. Its not just going and killing easily. You can learn about more HVH on youtube.</div>
+
+  <button class="faq-button" onclick="toggleFaq(this)">What is semi-rage</button>
+  <div class="faq-content">Semi-rage is a way to play very aggressively against non-hacking people. It is not related to HVH.</div>
+
+
+  <button class="faq-button" onclick="toggleFaq(this)">What is legit cheating</button>
+  <div class="faq-content">Legit cheating is a way of cheating to not get caught, is mostly esp and legitbot, sometimes aimbot.</div>
+
+
+  <button class="faq-button" onclick="toggleFaq(this)">What is an Undetected cheat?</button>
+  <div class="faq-content"> An undetected cheat is a cheat that has good bypasses and does not get you banned.</div>
+
+
+  <button class="faq-button" onclick="toggleFaq(this)">What is an external cheat?</button>
+  <div class="faq-content"> An external cheat is a cheat that runs outside the game and is weaker but safer to use.</div>
+
+
+  <button class="faq-button" onclick="toggleFaq(this)">What is an internal cheat?</button>
+  <div class="faq-content">An internal cheat is a cheat that runs inside your game, it is better but more unsafe.</div>
+
+
+</div>
+
+<footer>Cs2Cheatz v0.2</footer>
+
+<div id="loadingOverlay">
+  <div class="loader"></div>
+  <div id="loadingText">Loading…</div>
+</div>
+
+<script>
+// Toggle FAQ answer with animation + confetti
+function toggleFaq(button){
+  const content = button.nextElementSibling;
+  content.classList.toggle("show");
+
+  // Confetti effect
+  const rect = button.getBoundingClientRect();
+  for(let i=0;i<20;i++){
+    const d = document.createElement("div");
+    d.className="confetti-piece";
+    d.style.left = rect.left + rect.width/2 + "px";
+    d.style.top = rect.top + rect.height/2 + "px";
+    d.style.background = ["#2de2ff","#ff5c5c","#4dff88","#ffb84d"][Math.floor(Math.random()*4)];
+    d.style.transform=`translate(${(Math.random()-0.5)*120}px, ${(Math.random()-0.5)*120}px) rotate(${Math.random()*720}deg)`;
+    document.body.appendChild(d);
+    setTimeout(()=>d.remove(),1000);
+  }
+}
+</script>
+
+</body>
+</html>
