@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>cs2cheatz credits</title>
+<style>
+  /* ROOT VARIABLES */
+  :root {
+    --accent: #2da3ff;
+    --bg: #050b14;
+    --text: #eaf2ff;
+    --muted: #9db7d6;
+    --paid: #ff5c5c;
+    --free: #4dff88;
+    --other: #ffb84d;
+    --risky: #ffd84d;
+    --link: #2de2ff;
+  }
+
+  /* GLOBAL STYLES */
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    background: radial-gradient(circle at top, #0a1c33, #040910);
+    color: var(--text);
+    min-height: 100vh;
+    text-transform: lowercase;
+  }
+
+  /* HEADER */
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: lowercase;
+  }
+
+  /* NAVIGATION BUTTONS */
+  .nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+
+  .nav-btn {
+    background: linear-gradient(180deg, #0c213b, #08182c);
+    color: var(--text);
+    border: 1px solid #1f4c78;
+    padding: 8px 14px;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: 0.25s;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    text-transform: lowercase;
+  }
+
+  .nav-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px rgba(45, 163, 255, 0.6);
+  }
+
+  .nav-btn img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+  }
+
+  /* MAIN CONTAINER */
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+  }
+
+  /* CREDITS CONTAINER */
+  .credits-container {
+    background: linear-gradient(180deg, #0b1f36, #08182b);
+    border: 1px solid #1f4c78;
+    border-radius: 18px;
+    padding: 24px;
+    text-align: center;
+    max-width: 400px;
+    position: relative;
+  }
+
+  .credits-container h2 {
+    text-transform: lowercase;
+    margin-top: 0;
+  }
+
+  .credits-container p {
+    text-transform: lowercase;
+    margin: 12px 0;
+  }
+
+  /* LINKS */
+  .credits-container a {
+    color: var(--link);
+    text-decoration: none;
+    text-transform: lowercase;
+  }
+
+  /* CREDIT SECTIONS */
+  .credit-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin: 12px 0;
+  }
+
+  .credit-section img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+  }
+
+  /* BUTTONS */
+  button {
+    background: linear-gradient(180deg, #0c213b, #08182c);
+    color: var(--text);
+    border: 1px solid #1f4c78;
+    padding: 12px 18px;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: 0.25s;
+    margin-top: 20px;
+    text-transform: lowercase;
+  }
+
+  button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px rgba(45, 163, 255, 0.6);
+  }
+
+  /* CONFETTI ANIMATION */
+  .confetti-piece {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: fall 0.9s forwards;
+  }
+
+  @keyframes fall {
+    to {
+      opacity: 0;
+    }
+  }
+
+  /* LOADING OVERLAY */
+  #loadingOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 11, 20, 0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s;
+    z-index: 9999;
+  }
+
+  #loadingOverlay.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .loader {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 4px solid rgba(255, 255, 255, 0.1);
+    border-top: 4px solid var(--accent);
+    animation: spin 1s linear infinite;
+    margin-bottom: 14px;
+  }
+
+  #loadingText {
+    text-transform: lowercase;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 750px) {
+    .nav-buttons {
+      flex-wrap: wrap;
+    }
+
+    .credits-container {
+      max-width: 90%;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <!-- NAVIGATION BUTTONS SECTION -->
+  <div class="nav-buttons">
+    <a href="./index.html" class="nav-btn">
+      <img src="images/home.png" alt="home">
+      <span>home</span>
+    </a>
+    <a href="./credits.html" class="nav-btn">
+      <img src="images/faq.png" alt="faq">
+      <span>faq</span>
+    </a>
+  </div>
+
+  <!-- MAIN CONTAINER -->
+  <div class="main-container">
+    <h1>credits</h1>
+
+    <!-- CREDITS CONTAINER SECTION -->
+    <div class="credits-container" id="creditsContent">
+      <h2>made by gabito / 1i3w</h2>
+      <p>
+        youtube: <a href="https://www.youtube.com/@1i3www" target="_blank">@1i3www</a><br>
+        telegram: <a href="https://t.me/gabihvh" target="_blank">@gabihvh</a>
+      </p>
+
+      <div class="credit-section">
+        <span>made by using chatgpt</span>
+        <img src="images/gpt.png" alt="chatgpt logo">
+      </div>
+
+      <div class="credit-section">
+        <span>made by using github copilot</span>
+        <img src="images/copilot.png" alt="github copilot logo">
+      </div>
+
+      <button id="confettiBtn">celebrate!</button>
+    </div>
+  </div>
+
+  <!-- LOADING OVERLAY SECTION -->
+  <div id="loadingOverlay">
+    <div class="loader"></div>
+    <div id="loadingText">loading…</div>
+  </div>
+
+  <script>
+    // CONFETTI ANIMATION FUNCTION
+    const confettiBtn = document.getElementById('confettiBtn');
+    confettiBtn.addEventListener('click', () => {
+      const c = document.getElementById('creditsContent');
+      const r = c.getBoundingClientRect();
+      for (let i = 0; i < 50; i++) {
+        const d = document.createElement("div");
+        d.className = "confetti-piece";
+        d.style.left = (r.left + r.width / 2) + "px";
+        d.style.top = (r.top + r.height / 2) + "px";
+        d.style.background = ["#2de2ff", "#ff5c5c", "#4dff88", "#ffb84d"][Math.floor(Math.random() * 4)];
+        d.style.transform = `translate(${(Math.random() - 0.5) * 300}px, ${(Math.random() - 0.5) * 300}px) rotate(${Math.random() * 720}deg)`;
+        document.body.appendChild(d);
+        setTimeout(() => d.remove(), 900);
+      }
+    });
+
+    // OPEN LINK FUNCTION
+    function go(url) {
+      const overlay = document.getElementById('loadingOverlay');
+      document.getElementById('loadingText').textContent = `going to ${url.replace(/^https?:\/\//, '')}`;
+      overlay.classList.add('show');
+      setTimeout(() => {
+        window.open(url, "_blank");
+        overlay.classList.remove('show');
+      }, 1200);
+    }
+  </script>
+
+</body>
+</html>

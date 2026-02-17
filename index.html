@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cs2cheatz</title>
+  <style>
+    /* ROOT VARIABLES */
+    :root {
+      --accent: #2da3ff;
+      --bg: #050b14;
+      --text: #eaf2ff;
+      --muted: #9db7d6;
+      --paid: #ff5c5c;
+      --free: #4dff88;
+      --other: #ffb84d;
+      --risky: #ffd84d;
+      --link: #2de2ff;
+    }
+
+    /* GLOBAL STYLES */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, Helvetica, sans-serif;
+      background: radial-gradient(circle at top, #0a1c33, #040910);
+      color: var(--text);
+    }
+
+    /* HEADER & TITLE */
+    h1 {
+      text-align: center;
+      margin-bottom: 4px;
+      text-transform: lowercase;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: 20px;
+      text-transform: lowercase;
+    }
+
+    .title-with-logo {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      max-width: 1300px;
+      margin: 0 auto 20px;
+    }
+
+    .title-with-logo img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+
+    .title-row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+    }
+
+    .title-row h1 {
+      margin: 0;
+    }
+
+    /* LINKS */
+    a,
+    a:visited {
+      color: var(--link);
+      text-decoration: none;
+      text-transform: lowercase;
+    }
+
+    /* TELEGRAM BUTTON */
+    .tg-button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 14px;
+      border: 1px solid #1f4c78;
+      background: linear-gradient(180deg, #0c213b, #08182c);
+      color: var(--text);
+      text-decoration: none;
+      transition: 0.25s;
+      white-space: nowrap;
+      text-transform: lowercase;
+    }
+
+    .tg-button img {
+      width: 20px;
+      height: 20px;
+    }
+
+    .tg-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 16px rgba(45, 163, 255, 0.6);
+    }
+
+    /* TABS */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .tab {
+      padding: 10px 18px;
+      border-radius: 14px;
+      border: 1px solid #1f4c78;
+      background: #071524;
+      cursor: pointer;
+      transition: 0.25s;
+      text-transform: lowercase;
+    }
+
+    .tab.active {
+      background: #0c213b;
+      box-shadow: 0 0 18px rgba(45, 163, 255, 0.6);
+    }
+
+    /* SEARCH BOX */
+    .search-box {
+      max-width: 420px;
+      margin: 0 auto 25px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid #1f4c78;
+      background: #071524;
+      color: var(--text);
+    }
+
+    .search-box input::placeholder {
+      text-transform: lowercase;
+    }
+
+    /* BUTTONS GRID */
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+      max-width: 1300px;
+      margin: auto auto 30px;
+      opacity: 1;
+      transition: 0.3s;
+    }
+
+    button {
+      background: linear-gradient(180deg, #0c213b, #08182c);
+      color: var(--text);
+      border: 1px solid #1f4c78;
+      padding: 11px;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: 0.25s;
+      position: relative;
+      text-transform: lowercase;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 20px rgba(45, 163, 255, 0.6);
+    }
+
+    /* TAGS */
+    .tag {
+      font-size: 10px;
+      margin-left: 6px;
+      text-transform: lowercase;
+    }
+
+    .tag.paid {
+      color: var(--paid);
+    }
+
+    .tag.free {
+      color: var(--free);
+    }
+
+    .tag.other {
+      color: var(--other);
+    }
+
+    .tag.risky {
+      color: var(--risky);
+    }
+
+    /* ICON BUTTONS */
+    .icon-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-transform: lowercase;
+    }
+
+    .icon-btn img {
+      width: 18px;
+      height: 18px;
+      object-fit: contain;
+    }
+
+    /* CONTENT DISPLAY */
+    .content {
+      max-width: 950px;
+      margin: auto;
+      background: linear-gradient(180deg, #0b1f36, #08182b);
+      padding: 22px;
+      border-radius: 18px;
+      border: 1px solid #1f4c78;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 20px;
+      opacity: 0;
+      transform: translateY(18px);
+      transition: 0.4s;
+    }
+
+    .content.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .content h2 {
+      text-transform: lowercase;
+    }
+
+    .content p {
+      text-transform: lowercase;
+    }
+
+    /* PRICE BOX */
+    .price-box {
+      background: #071524;
+      border-radius: 14px;
+      padding: 14px;
+      border: 1px solid #1f4c78;
+    }
+
+    .price-box h3 {
+      margin-top: 0;
+      color: var(--accent);
+      text-transform: lowercase;
+    }
+
+    .price-box ul {
+      text-transform: lowercase;
+    }
+
+    /* WARNING MESSAGE */
+    .warning {
+      grid-column: 1 / -1;
+      background: rgba(255, 216, 77, 0.15);
+      border: 1px solid var(--risky);
+      border-radius: 12px;
+      padding: 14px;
+      color: #ffeaa0;
+      font-weight: bold;
+      text-align: center;
+      text-transform: lowercase;
+    }
+
+    /* CONFETTI ANIMATION */
+    .confetti-piece {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: fall 0.9s forwards;
+    }
+
+    @keyframes fall {
+      to {
+        opacity: 0;
+      }
+    }
+
+    /* LOADING OVERLAY */
+    #loadingOverlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 11, 20, 0.95);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.3s;
+      z-index: 9999;
+    }
+
+    #loadingOverlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .loader {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 4px solid rgba(255, 255, 255, 0.1);
+      border-top: 4px solid var(--accent);
+      animation: spin 1s linear infinite;
+      margin-bottom: 14px;
+    }
+
+    #loadingText {
+      text-transform: lowercase;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* ACTION BUTTONS */
+    .action-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin: 25px 0;
+      flex-wrap: wrap;
+    }
+
+    .action-buttons a {
+      text-decoration: none;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: lowercase;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 750px) {
+      .content {
+        grid-template-columns: 1fr;
+      }
+
+      .title-with-logo {
+        flex-direction: column;
+      }
+    }
+
+    @media (hover: none) {
+      button:hover {
+        transform: none;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER SECTION -->
+  <div class="title-with-logo">
+    <a href="https://t.me/cs2cheatz" target="_blank" class="tg-button">
+      <img src="images/logo.png" alt="logo">
+      <span>telegram channel</span>
+    </a>
+    <div class="title-row">
+      <img src="images/logo.png" alt="logo">
+      <h1 style="font-size: 30px;">best undetected cheats at the moment</h1>
+    </div>
+  </div>
+  <div class="subtitle">cs2cheatz</div>
+
+  <!-- TABS SECTION -->
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('paid', this)">paid</div>
+    <div class="tab" onclick="switchTab('free', this)">free</div>
+    <div class="tab" onclick="switchTab('risky', this)">risky ⚠️</div>
+    <div class="tab" onclick="switchTab('other', this)">others</div>
+    <div class="tab" onclick="switchTab('cracks', this)">cracks</div>
+  </div>
+
+  <!-- SEARCH SECTION -->
+  <div class="search-box">
+    <input id="search" placeholder="search..." onkeyup="filterButtons()">
+  </div>
+
+  <!-- PAID TAB SECTION -->
+  <div class="buttons tab-content" id="paid">
+    <button onclick="show('Nixware', event)">nixware <span class="tag paid">paid</span></button>
+    <button onclick="show('Neverlose', event)">neverlose <span class="tag paid">paid</span></button>
+    <button onclick="show('Iniuria', event)">iniuria <span class="tag paid">paid</span></button>
+    <button onclick="show('Fatality', event)">fatality <span class="tag paid">invite</span></button>
+    <button onclick="show('Memesense', event)">memesense <span class="tag paid">paid</span></button>
+    <button onclick="show('Gamesense', event)">gamesense <span class="tag paid">invite</span></button>
+    <button onclick="show('Midnight', event)">midnight <span class="tag paid">paid</span></button>
+    <button onclick="show('Primordial', event)">primordial <span class="tag paid">paid</span></button>
+    <button onclick="show('Melatonin', event)">melatonin <span class="tag paid">paid</span></button>
+    <button onclick="show('Compkiller', event)">compkiller <span class="tag paid">paid</span></button>
+    <button onclick="show('Anyx', event)">anyx <span class="tag paid">paid</span></button>
+    <button onclick="show('Plaguecheat', event)">plaguecheat <span class="tag paid">paid</span></button>
+    <button onclick="show('xOne', event)">xone <span class="tag paid">paid</span></button>
+    <button onclick="show('Baimless', event)">baimless <span class="tag paid">paid</span></button>
+    <button onclick="show('Vanity', event)">vanity <span class="tag paid">paid</span></button>
+    <button onclick="show('Predator.systems', event)">predator.systems <span class="tag paid">paid</span></button>
+    <button onclick="show('Pellix', event)">pellix <span class="tag paid">paid</span></button>
+    <button onclick="show('Astral', event)">astral <span class="tag paid">paid</span></button>
+    <button onclick="show('Interium', event)">interium <span class="tag paid">paid</span></button>
+    <button onclick="show('Bankroll', event)">bankroll <span class="tag paid">paid</span></button>
+    <button onclick="show('Tracele.ss', event)">tracele.ss <span class="tag paid">paid</span></button>
+    <button onclick="show('Hardline', event)">hardline <span class="tag paid">paid</span></button>
+    <button onclick="show('Cxrbon.dev', event)">cxrbon.dev <span class="tag paid">paid</span></button>
+    <button onclick="show('Umbra', event)">umbra <span class="tag paid">invite</span></button>
+  </div>
+
+  <!-- FREE TAB SECTION -->
+  <div class="buttons tab-content" id="free" style="display: none;">
+    <button onclick="show('Enigma', event)">enigma <span class="tag free">free</span></button>
+    <button onclick="show('Undetek', event)">undetek <span class="tag free">free</span></button>
+    <button onclick="show('ExHack', event)">exhack <span class="tag free">free</span></button>
+    <button onclick="show('SharkHack', event)">sharkhack <span class="tag free">free</span></button>
+    <button onclick="show('Osiris v2', event)">osiris v2 <span class="tag free">free</span></button>
+    <button onclick="show('UwUware', event)">uwuware <span class="tag free">free</span></button>
+    <button onclick="show('xOne Free', event)">xone external <span class="tag free">free</span></button>
+  </div>
+
+  <!-- RISKY TAB SECTION -->
+  <div class="buttons tab-content" id="risky" style="display: none;">
+    <button onclick="show('Supremacy', event)">supremacy <span class="tag risky">risky</span></button>
+    <button onclick="show('Reev', event)">reev <span class="tag risky">risky</span></button>
+    <button onclick="show('Dreamyware Recode', event)">dreamyware recode <span class="tag risky">risky</span></button>
+    <button onclick="show('Dreamyware v3', event)">dreamyware v3 <span class="tag risky">risky</span></button>
+    <button onclick="show('Dragonburn v2', event)">dragonburn v2 <span class="tag risky">risky</span></button>
+    <button onclick="show('Vortix', event)">vortix <span class="tag risky">risky</span></button>
+    <button onclick="show('Nevairfree', event)">nevairfree <span class="tag risky">risky</span></button>
+  </div>
+
+  <!-- OTHERS TAB SECTION -->
+  <div class="buttons tab-content" id="other" style="display: none;">
+    <button onclick="show('MesaChanger', event)">mesachanger <span class="tag other">skinchanger</span></button>
+    <button onclick="show('SpurdoChanger', event)">spurdochanger <span class="tag other">skinchanger</span></button>
+    <button onclick="show('LunarChanger', event)">lunarchanger <span class="tag other">skinchanger</span></button>
+    <button onclick="show('cs2radarhack', event)">cs2radarhack <span class="tag other">radar</span></button>
+    <button onclick="show('Exloader', event)">exloader <span class="tag other">tool</span></button>
+  </div>
+
+  <!-- CRACKS TAB SECTION -->
+  <div class="buttons tab-content" id="cracks" style="display: none;">
+    <button onclick="show('Nonagon', event)">nonagon <span class="tag risky">risky</span></button>
+    <button onclick="show('Lightmoon', event)">lightmoon <span class="tag other">crack</span></button>
+  </div>
+
+  <!-- CONTENT DISPLAY SECTION -->
+  <div id="content" class="content">
+    <p style="color: var(--muted);">select a cheat to view details.</p>
+  </div>
+
+  <!-- ACTION BUTTONS SECTION -->
+  <div class="action-buttons">
+    <a href="./credits.html">
+      <button class="icon-btn">
+        <img src="images/faq.png" alt="faq">
+        faq
+      </button>
+    </a>
+    <a href="./credits.html">
+      <button class="icon-btn">
+        <img src="images/credits.png" alt="credits">
+        credits
+      </button>
+    </a>
+    <a href="./changelog.html">
+      <button class="icon-btn">
+        <img src="images/changelog.png" alt="changelog">
+        changelog
+      </button>
+    </a>
+  </div>
+
+  <!-- FOOTER SECTION -->
+  <footer>cs2cheatz v0.2</footer>
+
+  <!-- LOADING OVERLAY SECTION -->
+  <div id="loadingOverlay">
+    <div class="loader"></div>
+    <div id="loadingText">going to site…</div>
+  </div>
+
+  <script>
+    const exloader = "https://en.exloader.net";
+
+    // ALL CHEATS DATA
+    const data = {
+      // PAID CHEATS
+      Nixware: { desc: "amazing visuals, best semi-rage, good legit.", link: "https://nixware.cc", prices: ["undetected"] },
+      Neverlose: { desc: "the best visual cheat, amazing skin changer, one of the best hvh cheat, and good legit cheat.", link: "https://neverlose.cc", prices: ["undetected"] },
+      Iniuria: { desc: "good visuals, good legit, and good semi-rage.", link: "https://iniuria.us", prices: ["undetected"] },
+      Fatality: { desc: "amazing cheat for hvh, good legit, invite only.", link: "https://fatality.win", prices: ["undetected"] },
+      Memesense: { desc: "the best, the goat of legit cheating, amazing visuals, and good semi-rage.", link: "https://memesense.gg", prices: ["undetected"] },
+      Gamesense: { desc: "legendary cheat, also known as hristosense and skeet.cc, it is one of the best hvh cheat, good visuals, invite only.", link: "https://gamesense.pub", prices: ["undetected"] },
+      Midnight: { desc: "amazing visuals, decent legit cheat.", link: "https://midnight.im", prices: ["undetected"] },
+      Primordial: { desc: "decent hvh cheat, also legit.", link: "https://primordial.dev", prices: ["undetected"] },
+      Melatonin: { desc: "decent legit cheat.", link: "https://melatonin.win", prices: ["undetected"] },
+      Compkiller: { desc: "amazing visuals, just like neverlose, amazing hvh cheat, semi-rage and legit.", link: "https://compkiller.net", prices: ["undetected"] },
+      Anyx: { desc: "amazing/decent legit cheat", link: "https://anyx.gg", prices: ["undetected"] },
+      Plaguecheat: { desc: "known good hvh cheat, visuals are decent.", link: "https://plaguecheat.cc", prices: ["undetected"] },
+      xOne: { desc: "good legit cheat.", link: "https://xone.fun", prices: ["undetected"] },
+      Baimless: { desc: "decent cheat, decent visuals.", link: "https://baimless.com", prices: ["undetected"] },
+      Vanity: { desc: "decent legit cheat, good visuals.", link: "https://vanitycheats.xyz", prices: ["undetected"] },
+      "Predator.systems": { desc: "amazing legit cheat.", link: "https://predator.systems", prices: ["undetected"] },
+      Pellix: { desc: "decent legit cheat and is cheap.", link: "https://pellix.gg", prices: ["undetected"] },
+      Astral: { desc: "decent hvh cheat, it is very good.", link: "https://astral.rip", prices: ["undetected"] },
+      Interium: { desc: "decent hch cheat, nice visuals.", link: "https://interium.ooo", prices: ["undetected"] },
+      Bankroll: { desc: "new cheat to the community, semi-rage and legit cheat, decent visuals.", link: "https://bankroll.su", prices: ["undetected"] },
+      "Tracele.ss": { desc: "decent hvh cheat.", link: "https://tracele.ss", prices: ["undetected"] },
+      Hardline: { desc: "decent cheat.", link: "https://hardline.team", prices: ["undetected"] },
+      "Cxrbon.dev": { desc: "new decent cheat.", link: "https://cxrbon.dev", prices: ["undetected"] },
+      Umbra: { desc: "good visual decent legit cheat, invite only.", link: "https://umbra.top", prices: ["undetected"] },
+
+      // FREE CHEATS
+      Enigma: { desc: "free on exloader. the best free cheat, amazing visuals, aimbot and triggerbot.", link: exloader, prices: ["undetected"] },
+      Undetek: { desc: "free. bad free cheat, small menu and you can only use arrow keys to move around in menu, but esp and aimbot are still good.", link: "https://undetek.com", prices: ["undetected"] },
+      ExHack: { desc: "free on exloader. decent legit cheat.", link: exloader, prices: ["undetected"] },
+      SharkHack: { desc: "free on exloader. very good visuals and legit.", link: exloader, prices: ["undetected"] },
+      "Osiris v2": { desc: "open-source cheat and available on exloader. good esp good cheat, menu is in near the settings button.", link: exloader, prices: ["undetected"] },
+      UwUware: { desc: "free on exloader. decent legit cheat.", link: exloader, prices: ["undetected"] },
+      "xOne Free": { desc: "either on xone.fun for 1 day, either download on exloader. only wallhack, but it is undetected and from premium cheat.", link: exloader, prices: ["undetected"] },
+
+      // RISKY CHEATS
+      Supremacy: { desc: "gamesense like cheat, updated to legit and semi-rage, unknown if undetected.", link: "https://hackvshack.net", prices: ["risky"] },
+      Reev: { desc: "decent free cheat, unknown if undetected.", link: "https://hackvshack.net", prices: ["risky"] },
+      "Dreamyware Recode": { desc: "recode of dreamyware, unknown if undetected.", link: "https://hackvshack.net", prices: ["risky"] },
+      "Dreamyware v3": { desc: "decent cheat, unknown if undetected.", link: "https://hackvshack.net", prices: ["risky"] },
+      "Dragonburn v2": { desc: "decent cheat, unknown if undetected.", link: "https://hackvshack.net", prices: ["risky"] },
+      Vortix: { desc: "decent cheat, unknown if undetected.", link: "https://hackvshack.net", prices: ["risky"] },
+      Nevairfree: { desc: "popular free cheat, maybe undetected.", link: "https://hackvshack.net", prices: ["risky"] },
+
+      // OTHER CHEATS
+      MesaChanger: { desc: "skinchanger, the worst in my opinion, configs don't work properly, you have to equip yourself.", link: "https://mesachanger.com", prices: ["undetected"] },
+      SpurdoChanger: { desc: "good for free skin changer, also it is paid, paid version is good, for free version, you can only equip 7 skins.", link: "https://spurdoverse.app", prices: ["undetected"] },
+      LunarChanger: { desc: "only frostchanger.", link: "https://frostchanger.com", prices: ["undetected"] },
+      cs2radarhack: { desc: "web radar.", link: "https://cs2-webradar.com", prices: ["unknown"] },
+      Exloader: { desc: "cheat loader with a lot of free cheats.", link: exloader, prices: ["free/paid"] },
+
+      // CRACK CHEATS
+      Nonagon: { desc: "cracked premium cheat. extremely risky. mid for hvh and a lot of bugs.", link: "https://hackvshack.net/threads/nonagonzone-premium-free-latest-28-1.10723/", prices: ["cracked", "risky"] },
+      Lightmoon: { desc: "very nice cheat, works good.", link: "https://hackvshack.net/threads/cs2-lightmoon-best-external-cheat-legit-semi-rage-auto-update.9502/", prices: ["cracked"] }
+    };
+
+    // SHOW CHEAT DETAILS FUNCTION
+    function show(name, e) {
+      e.preventDefault();
+      const c = document.getElementById("content");
+      c.classList.remove("show");
+
+      const btn = e.currentTarget || e.target.closest("button");
+      const r = btn.getBoundingClientRect();
+
+      // CREATE CONFETTI
+      for (let i = 0; i < 18; i++) {
+        const d = document.createElement("div");
+        d.className = "confetti-piece";
+        d.style.left = r.left + r.width / 2 + "px";
+        d.style.top = r.top + r.height / 2 + "px";
+        d.style.background = ["#2de2ff", "#ff5c5c", "#4dff88", "#ffb84d"][Math.floor(Math.random() * 4)];
+        d.style.transform = `translate(${(Math.random() - 0.5) * 160}px, ${(Math.random() - 0.5) * 160}px) rotate(${Math.random() * 720}deg)`;
+        document.body.appendChild(d);
+        setTimeout(() => d.remove(), 900);
+      }
+
+      // SHOW CONTENT
+      setTimeout(() => {
+        const warn = name === "Nonagon";
+        c.innerHTML = `
+          ${warn ? `<div class="warning">⚠️ use at your own risk — this cheat is very likely detected</div>` : ""}
+          <div>
+            <h2>${name.toLowerCase()}</h2>
+            <p>${data[name].desc}</p>
+            <p><a href="#" onclick="go('${data[name].link}')">visit website →</a></p>
+          </div>
+          <div class="price-box">
+            <h3>status</h3>
+            <ul>${data[name].prices.map(p => `<li>${p}</li>`).join("")}</ul>
+          </div>
+        `;
+        c.classList.add("show");
+      }, 120);
+    }
+
+    // OPEN LINK FUNCTION
+    function go(url) {
+      let o = document.getElementById("loadingOverlay");
+      document.getElementById("loadingText").textContent = `going to "${url.replace(/^https?:\/\//, '')}"`;
+      o.classList.add("show");
+      setTimeout(() => {
+        window.open(url, "_blank");
+        o.classList.remove("show");
+      }, 1200);
+    }
+
+    // SWITCH TAB FUNCTION
+    function switchTab(id, el) {
+      document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+      el.classList.add("active");
+      document.querySelectorAll(".tab-content").forEach(c => {
+        c.style.opacity = 0;
+        setTimeout(() => c.style.display = "none", 200);
+      });
+      setTimeout(() => {
+        let t = document.getElementById(id);
+        t.style.display = "grid";
+        t.style.opacity = 1;
+      }, 250);
+      document.getElementById("search").value = "";
+    }
+
+    // FILTER BUTTONS FUNCTION
+    function filterButtons() {
+      let v = document.getElementById("search").value.toLowerCase();
+      document.querySelectorAll(".tab-content").forEach(tab => {
+        if (tab.style.display !== "none") {
+          tab.querySelectorAll("button").forEach(b => {
+            b.style.display = b.textContent.toLowerCase().includes(v) ? "" : "none";
+          });
+        }
+      });
+    }
+  </script>
+</body>
+</html>
